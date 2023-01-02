@@ -1,2 +1,2 @@
 # AddOn
-Enthält zusätzliche Dateien für eine Ersteinrichtung der Repositories in ReadyBin
+Enthält zusätzliche Dateien für eine Ersteinrichtung der Repositories in ReadyBin. Dieses Repository bleibt immer private.
