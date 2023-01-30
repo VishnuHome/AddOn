@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+ 	<PropertyGroup>
+   	<SetEnvironmentVars_loaded>true</SetEnvironmentVars_loaded>
+
+   	<VishnuRoot Condition="'$(Vishnu_Root)'!=''">$(Vishnu_Root)</VishnuRoot>
+   	<AssemblyRoot Condition="'$(Assembly_Root)'!=''">$(Assembly_Root)</AssemblyRoot>
+ 	  <AssemblyRoot Condition="'$(Assembly_Root)'=='' and $(Vishnu_Root)!=''">$(VishnuRoot)/ReadyBin/Assemblies</AssemblyRoot>
+ 	  
+  </PropertyGroup>
+	  
+	<Target Name="ValidateSettings" BeforeTargets="Build">
+   	<Message Importance="High" Text="ValidateSettings ==&gt; Vishnu_Root: $(Vishnu_Root), Assembly_Root: $(Assembly_Root)" />
+   	<Message Importance="High" Text="ValidateSettings ==&gt; Vishnu_Company: $(Vishnu_Company)"
+   		       Condition="'$(Vishnu_Company)'!=''" />
+   	<Message Importance="High" Text="ValidateSettings ==&gt; VishnuRoot: $(VishnuRoot), AssemblyRoot: $(AssemblyRoot)" />
+    
+    <Error Text="ValidateSettings ==&gt; Couldn't find a valid Vishnu-Root directory."
+    	     Condition="!Exists('$(VishnuRoot)')" />
+    <Error Text="ValidateSettings ==&gt; Couldn't find a valid assembly directory."
+    	     Condition="!Exists('$(AssemblyRoot)')" />
+
+    <Message Importance="High" Text="ValidateSettings ==&gt; 'Vishnu_Root' should be set to a valid directory-path through environment or command line."
+    	       Condition="'$(Vishnu_Root)$(Assembly_Root)' == ''" />
+
+    <Message Text="ValidateSettings ==&gt; notice: 'Assembly_Root' can be set to a special directory-path through environment or command line, if needed."
+    	       Condition="'$(Assembly_Root)' == ''" />
+  </Target>
+</Project>                                                               
