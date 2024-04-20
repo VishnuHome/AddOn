@@ -21,7 +21,7 @@
     <Error Text="ValidateSettings ==&gt; Couldn't find a valid assembly directory."
     	     Condition="!Exists('$(AssemblyRoot)')" />
 
-    <Message Importance="High" Text="ValidateSettings ==&gt; 'Vishnu_Root' should be set to a valid directory-path through environment or command line."
+    <Message Importance="High" Text="ValidateSettings ==&gt; 'Vishnu_Root' can be set to a valid directory-path through environment or command line, if needed."
     	       Condition="'$(Vishnu_Root)$(Assembly_Root)' == ''" />
 
     <Message Text="ValidateSettings ==&gt; notice: 'Assembly_Root' can be set to a special directory-path through environment or command line, if needed."
